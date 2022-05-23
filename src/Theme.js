@@ -9,7 +9,8 @@ const theme = {
         black: "#211E31",
         secondaryBlack: "#170B2E",
         green: "#24CA49",
-        red: "#E63D3E"
+        red: "#E63D3E",
+        grey: "#9A9AAF"
     },
     fonts: ["sans-serif", "Aeonik"],
     fontSizes: {

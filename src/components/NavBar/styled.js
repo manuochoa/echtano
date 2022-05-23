@@ -8,13 +8,18 @@ export const NavBarWrapper = styled.nav`
   height: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   background-color: ${({theme}) => theme.colors.secondaryBlack};
-  color: ${({theme}) => theme.colors.white}
+  color: ${({theme}) => theme.colors.white};
+  padding: 0 20px;
+  position: relative;
 `
 
 export const NavBarContainer = styled(Container)`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -59,4 +64,29 @@ export const ConnectButton = styled(NavBarItem)`
   &:hover {
     background: ${({theme}) => theme.colors.white};
   }
+`
+
+export const Footer = styled.footer`
+  width: 100%;
+  max-width: 260px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: ${({theme}) => theme.colors.white};
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.29);
+  background-color: ${({theme}) => theme.colors.secondaryBlack};
+  a {
+    display: flex;
+    justify-content: center;
+    color: ${({theme}) => theme.colors.white};
+  }
+`
+
+export const FooterImageContainer = styled.div`
+  width: 100%;
+  max-width: 17px;
+  margin: 0 10px;
 `
