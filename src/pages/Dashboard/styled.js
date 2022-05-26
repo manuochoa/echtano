@@ -12,12 +12,13 @@ export const WidgetWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  border-radius: 16px;
 `
 
 export const BottomWidgetWrapper = styled(WidgetWrapper)`
   background: rgba(255, 255, 255, 0.8);
   padding: 87px 0;
-  border-radius: 16px;
 `
 
 export const MSizeWidget = styled.div`
@@ -26,7 +27,11 @@ export const MSizeWidget = styled.div`
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(40px);
   border-radius: 16px;
-  padding: 50px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  //height: 100px;
+  //padding: 20px 0;
 `
 
 export const XlSizeWidget = styled(MSizeWidget)`

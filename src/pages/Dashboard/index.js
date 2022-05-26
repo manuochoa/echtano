@@ -4,11 +4,12 @@ import {
     BottomWidgetWrapper,
     DashboardWrapper,
     MSizeWidget,
-    MSizeWidgetWrapper,
+    // MSizeWidgetWrapper,
     WidgetWrapper,
     XlSizeWidget
 } from "./styled";
 import {WidgetMSize} from "./variables";
+import ChartComponent from "../../components/ChartComponent";
 
 export default function Dashboard() {
     return (
@@ -18,7 +19,10 @@ export default function Dashboard() {
                     {
                         WidgetMSize.map(item => {
                             return (
-                                <MSizeWidget key={item.id}/>
+                                <MSizeWidget key={item.id}>
+                                    <ChartComponent/>
+                                    <h3>sdasd</h3>
+                                </MSizeWidget>
                             )
                         })
                     }
