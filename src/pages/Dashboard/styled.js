@@ -22,16 +22,46 @@ export const BottomWidgetWrapper = styled(WidgetWrapper)`
 `
 
 export const MSizeWidget = styled.div`
-  width: calc(100% / 4);
-  max-width: 270px;
+  width: 100%;
+  max-width: 300px;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(40px);
   border-radius: 16px;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
+`
+
+export const MSizeTextContainer = styled.div`
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  h3 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+  }
+`
+
+export const MSizeValueContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  //height: 100px;
-  //padding: 20px 0;
+  p {
+    color: ${({percentType, theme}) => percentType === "down" ? theme.colors.red : theme.colors.green};
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  svg {
+    transform: rotateX(${({percentType}) => percentType === "down" && '-180deg'});
+    margin: 0 10px;
+  }
+  path {
+    fill: ${({percentType, theme}) => percentType === "down" ? theme.colors.red : theme.colors.green};
+  }
 `
 
 export const XlSizeWidget = styled(MSizeWidget)`
