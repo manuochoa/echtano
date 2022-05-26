@@ -4,38 +4,50 @@ import Chart from 'react-apexcharts'
 export default function ChartComponent() {
     const [chartOptions, setChartOptions] = useState({
         options: {
-            labels: [''],
+            labels: [' '],
             chart: {
                 background: "transparent",
-                width: '50%',
-                height: '100%',
+                width: 90,
+                height: 60
             },
             legend: {
                 show: false,
-                floating: true
             },
-            colors: ['#7517F8'],
+            dataLabels: {
+                enabled: false,
+                show: false
+            },
             stroke: {
                 lineCap: "round",
-                show: true,
                 curve: 'smooth',
-                colors: undefined,
                 width: 2,
                 dashArray: 0,
             },
-            dataLabels: {
-                enabled: false
+            fill: {
+                colors: ['#7517F8'],
+                type: 'gradient',
+                gradient: {
+                    shadeIntensity: 0.5,
+                    opacityFrom: 1,
+                    opacityTo: 2,
+                    stops: [0, 100]
+                }
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        show: false
+                    }
+                }
             }
         },
-        series: [73.2],
+        series: [70.3],
     })
     return (
-        <div className="donut">
-            <Chart options={chartOptions.options}
-                   series={chartOptions.series}
-                   type='radialBar'
-                   height="100%"
-            />
-        </div>
+        <Chart options={chartOptions.options}
+               series={chartOptions.series}
+               type='radialBar'
+               width='100%'
+        />
     );
 };
