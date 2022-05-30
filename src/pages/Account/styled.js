@@ -16,3 +16,17 @@ export const PriceWidgetWrapper = styled(WidgetWrapper)`
     line-height: 24px;
   }
 `
+
+export const AccountWidgetContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
+
+export const AccountWidgetWrapper = styled(PriceWidgetWrapper)`
+  width: calc(100% / 2.1);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
