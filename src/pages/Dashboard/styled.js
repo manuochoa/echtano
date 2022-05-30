@@ -18,7 +18,10 @@ export const WidgetWrapper = styled.div`
 
 export const BottomWidgetWrapper = styled(WidgetWrapper)`
   background: rgba(255, 255, 255, 0.8);
-  padding: 87px 0;
+  //padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 export const MSizeWidget = styled.div`
@@ -67,4 +70,40 @@ export const MSizeValueContainer = styled.div`
 export const XlSizeWidget = styled(MSizeWidget)`
   height: 455px;
   margin: 20px 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: hidden;
+`
+
+export const XlSizeTextContainer = styled(MSizeTextContainer)``
+
+export const XlSizeValueContainer = styled(MSizeValueContainer)``
+
+export const BottomWidgetItem = styled.div`
+  width: calc(100% / 3);
+  max-width: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 40px 55px;
+  h3 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+    //margin: 15px 0;
+  }
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  svg {
+    margin: 0 5px 0 10px;
+  }
+`
+
+export const BottomValueContainer = styled(XlSizeValueContainer)`
+  margin: 15px 0;
+  align-items: flex-end;
 `

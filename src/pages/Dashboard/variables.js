@@ -27,4 +27,28 @@ export const WidgetMSize = [
         percentType: "up",
         percentValue: 2.3
     },
+];
+
+export const bottomSizeWidget = [
+    {
+        id: 0,
+        title: "# Value of FirePit",
+        value: "294 510,75",
+        percentValue: 10,
+        sizeValue: 30,
+    },
+    {
+        id: 1,
+        title: "$ Value of FirePit",
+        value: "$15,935,620",
+        percentValue: 10,
+        sizeValue: 60,
+    },
+    {
+        id: 2,
+        title: "% FirePit: Supply",
+        value: "$12,875",
+        percentValue: 10,
+        sizeValue: 10,
+    },
 ]

@@ -35,3 +35,37 @@ export const accountData = [
         value: "$0",
     },
 ]
+
+export const accountBalanceData = [
+    {
+        id: 0,
+        data: [
+            {
+                id: 0,
+                color: "linear-gradient(180deg, #4DA1FF 0%, #4DFFDF 100%)",
+                title: "Your Balance:",
+                value: "$15,935,620",
+                percentValue: "10"
+            },
+            {
+                id: 1,
+                color: "linear-gradient(180deg, #FF7D05 0%, #FFD422 100%)",
+                title: "APY:",
+                value: "383 025,8%",
+                percentValue: "10"
+            }
+        ]
+    },
+    {
+        id: 1,
+        data: [
+            {
+                id: 0,
+                color: "linear-gradient(180deg, #7517F8 0%, #E323FF 100%)",
+                title: "Next Rebase:",
+                value: "00:10:55",
+                percentValue: "10"
+            }
+        ]
+    }
+]

@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import Chart from 'react-apexcharts'
 
-export default function ChartComponent() {
+export default function ChartComponent({ series, type, strokeWidth }) {
     const [chartOptions, setChartOptions] = useState({
         options: {
             labels: [' '],
             chart: {
                 background: "transparent",
-                width: 90,
-                height: 60
+                sparkline: {
+                    enabled: true
+                }
             },
             legend: {
                 show: false,
@@ -20,7 +21,7 @@ export default function ChartComponent() {
             stroke: {
                 lineCap: "round",
                 curve: 'smooth',
-                width: 2,
+                width:  strokeWidth,
                 dashArray: 0,
             },
             fill: {
@@ -41,12 +42,12 @@ export default function ChartComponent() {
                 }
             }
         },
-        series: [70.3],
+        series: [series],
     })
     return (
         <Chart options={chartOptions.options}
                series={chartOptions.series}
-               type='radialBar'
+               type={type}
                width='100%'
         />
     );
