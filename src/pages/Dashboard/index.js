@@ -13,11 +13,10 @@ import {
     XlSizeValueContainer,
     XlSizeWidget
 } from "./styled";
-import {bottomSizeWidget, WidgetMSize} from "./variables";
+import {bottomSizeWidget, dashboardAreaChartOptions, dashboardRoundChartOptions, WidgetMSize} from "./variables";
 import ChartComponent from "../../components/ChartComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown} from "@fortawesome/free-solid-svg-icons";
-import AreaChart from "../../components/ChartComponent/AreaChart";
 
 export default function Dashboard() {
 
@@ -34,7 +33,7 @@ export default function Dashboard() {
                             console.log(item.percentType)
                             return (
                                 <MSizeWidget key={item.id}>
-                                    <ChartComponent type="radialBar" series={70.3} strokeWidth={1}/>
+                                    <ChartComponent type="radialBar" options={dashboardRoundChartOptions} icon={item.icon}/>
                                     <MSizeTextContainer>
                                         <p>{item.title}</p>
                                         <MSizeValueContainer percentType={item.percentType}>
@@ -60,7 +59,7 @@ export default function Dashboard() {
                                             <p>{item.percentValue} %</p>
                                         </XlSizeValueContainer>
                                     </XlSizeTextContainer>
-                                    <AreaChart/>
+                                    <ChartComponent height='70%' type='area' options={dashboardAreaChartOptions}/>
                                 </XlSizeWidget>
                             )
                         })

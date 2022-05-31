@@ -25,8 +25,38 @@ export const AccountWidgetContainer = styled.div`
 
 export const AccountWidgetWrapper = styled(PriceWidgetWrapper)`
   width: calc(100% / 2.1);
-  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
+
+export const AccountDataContainer = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: none;
+  border-left: 4px solid;
+  border-image: ${({gradient}) => gradient};
+  border-image-slice: 1;
+  margin: 20px 25px;
+  h3 {
+    margin: 5px 25px;
+  }
+  p {
+    margin: 0 25px;
+  }
+  .description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+`
+
+export const AccountDataWrapper = styled.div`
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `

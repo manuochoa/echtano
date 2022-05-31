@@ -45,16 +45,53 @@ export const accountBalanceData = [
                 color: "linear-gradient(180deg, #4DA1FF 0%, #4DFFDF 100%)",
                 title: "Your Balance:",
                 value: "$15,935,620",
-                percentValue: "10"
+                percentValue: "10",
+                description: "123,353,80 $ECHO"
             },
             {
                 id: 1,
                 color: "linear-gradient(180deg, #FF7D05 0%, #FFD422 100%)",
                 title: "APY:",
                 value: "383 025,8%",
-                percentValue: "10"
+                percentValue: "10",
+                description: "Daily ROI 2.28%"
             }
-        ]
+        ],
+        chartOptions: {
+            options: {
+                labels: [' '],
+                chart: {
+                    background: "transparent",
+                    sparkline: {
+                        enabled: true
+                    }
+                },
+                legend: {
+                    show: false,
+                },
+                dataLabels: {
+                    enabled: false,
+                    show: false
+                },
+                stroke: {
+                    lineCap: "round",
+                    curve: 'smooth',
+                    width: 1,
+                    dashArray: 0,
+                },
+                fill: {
+                    colors: ['#4DA1FF', '#FF7D05'],
+                },
+                plotOptions: {
+                    radialBar: {
+                        dataLabels: {
+                            show: false
+                        }
+                    }
+                }
+            },
+            series: [80, 87],
+        }
     },
     {
         id: 1,
@@ -64,8 +101,63 @@ export const accountBalanceData = [
                 color: "linear-gradient(180deg, #7517F8 0%, #E323FF 100%)",
                 title: "Next Rebase:",
                 value: "00:10:55",
-                percentValue: "10"
+                percentValue: "10",
+                description: "You will earn money soon"
             }
-        ]
+        ],
     }
 ]
+
+export const accountRoundChartOptions = {
+    options: {
+        labels: [' '],
+        chart: {
+            background: "transparent",
+            sparkline: {
+                enabled: true
+            }
+        },
+        legend: {
+            show: false,
+        },
+        dataLabels: {
+            enabled: false,
+            show: false
+        },
+        stroke: {
+            lineCap: "round",
+            curve: 'smooth',
+            width: 1,
+            dashArray: 0,
+        },
+        fill: {
+            type: 'gradient',
+            // colors: ['#4DA1FF', '#FF7D05'],
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.7,
+                opacityTo: 0.9,
+                colorStops: [
+                    {
+                        offset: 0,
+                        color: "#EB656F",
+                        opacity: 1
+                    },
+                    {
+                        offset: 20,
+                        color: "#FAD375",
+                        opacity: 1
+                    },
+                ]
+            }
+        },
+        plotOptions: {
+            radialBar: {
+                dataLabels: {
+                    show: false
+                }
+            }
+        }
+    },
+    series: [80, 87],
+};
