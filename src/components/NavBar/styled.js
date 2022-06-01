@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 export const NavBarWrapper = styled.nav`
   width: 100%;
   max-width: 260px;
-  height: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,6 +14,10 @@ export const NavBarWrapper = styled.nav`
   color: ${({theme}) => theme.colors.white};
   padding: 0 20px;
   position: relative;
+  //position: fixed;
+  @media (max-width: 1280px) {
+    max-width: 200px;
+  }
   @media (max-width: 768px) {
     max-width: unset;
     min-height: unset;
@@ -110,6 +113,9 @@ export const NavBarFooter = styled.footer`
     display: flex;
     justify-content: center;
     color: ${({theme}) => theme.colors.white};
+  }
+  @media (max-width: 1280px) {
+    max-width: 200px;
   }
   @media (max-width: 768px) {
     display: none;

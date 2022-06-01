@@ -33,7 +33,7 @@ export default function Dashboard() {
                             console.log(item.percentType)
                             return (
                                 <MSizeWidget key={item.id}>
-                                    <ChartComponent type="radialBar" options={dashboardRoundChartOptions} icon={item.icon}/>
+                                    <ChartComponent type="radialBar" options={dashboardRoundChartOptions} icon={item.icon} width="70%"/>
                                     <MSizeTextContainer>
                                         <p>{item.title}</p>
                                         <MSizeValueContainer percentType={item.percentType}>

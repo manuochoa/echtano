@@ -51,6 +51,9 @@ export const MSizeWidget = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  @media (max-width: 1440px) {
+    max-width: 235px;
+  }
   @media (max-width: 425px) {
     margin: 10px 0;
   }
@@ -66,6 +69,9 @@ export const MSizeTextContainer = styled.div`
     font-weight: 700;
     font-size: 20px;
     line-height: 32px;
+  }
+  @media (max-width: 1440px) {
+    margin: 10px 0;
   }
 `
 
@@ -97,7 +103,11 @@ export const XlSizeWidget = styled(MSizeWidget)`
   overflow: hidden;
 `
 
-export const XlSizeTextContainer = styled(MSizeTextContainer)``
+export const XlSizeTextContainer = styled(MSizeTextContainer)`
+  @media (max-width: 1440px) {
+    margin: 10px;
+  }
+`
 
 export const XlSizeValueContainer = styled(MSizeValueContainer)``
 
@@ -120,6 +130,9 @@ export const BottomWidgetItem = styled.div`
   }
   svg {
     margin: 0 5px 0 10px;
+  }
+  @media (max-width: 1440px) {
+    margin: 20px;
   }
   @media (max-width: 425px) {
     width: 100%;

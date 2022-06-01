@@ -10,6 +10,8 @@ export const FooterWrapper = styled.footer`
     padding: 20px 0;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    bottom: 0;
 }
 `
 
