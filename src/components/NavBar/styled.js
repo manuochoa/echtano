@@ -15,6 +15,11 @@ export const NavBarWrapper = styled.nav`
   color: ${({theme}) => theme.colors.white};
   padding: 0 20px;
   position: relative;
+  @media (max-width: 768px) {
+    max-width: unset;
+    min-height: unset;
+    padding: 0;
+  }
 `
 
 export const NavBarContainer = styled(Container)`
@@ -23,6 +28,12 @@ export const NavBarContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 768px) {
+    padding: 15px 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 `
 
 export const NavBarItem = styled(Link)`
@@ -41,12 +52,19 @@ export const NavBarItem = styled(Link)`
   &:hover {
     background: ${({theme}) => theme.colors.purple};
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const NavBarImgContainer = styled.div`
   width: 100%;
   max-width: 20px;
   margin: 0 15px;
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-right: 15px;
+  }
   & > img {
     width: 100%;
   }
@@ -60,13 +78,23 @@ export const ConnectButton = styled(NavBarItem)`
   justify-content: space-between;
   p {
     margin: 0 20px;
+    @media (max-width: 768px) {
+      margin: 0;
+      margin-left: 15px;
+    }
   }
   &:hover {
     background: ${({theme}) => theme.colors.white};
   }
-`
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 165px;
+    margin: 0 20px;
+  }`
 
-export const Footer = styled.footer`
+export const NavBarFooter = styled.footer`
   width: 100%;
   max-width: 260px;
   position: absolute;
@@ -83,9 +111,12 @@ export const Footer = styled.footer`
     justify-content: center;
     color: ${({theme}) => theme.colors.white};
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
-export const FooterImageContainer = styled.div`
+export const NavBarFooterImageContainer = styled.div`
   width: 100%;
   max-width: 17px;
   margin: 0 10px;

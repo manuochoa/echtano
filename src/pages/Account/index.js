@@ -35,7 +35,7 @@ export default function Account() {
                                     }
                                     </AccountDataWrapper>
                                     {item.chartOptions &&
-                                        <ChartComponent type="radialBar" options={item.chartOptions} width="250px" icon={accountChartIcon}/>}
+                                        <ChartComponent type="radialBar" options={item.chartOptions} width="200px" icon={accountChartIcon}/>}
                                 </AccountWidgetWrapper>
                             )
                         })

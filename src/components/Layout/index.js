@@ -1,6 +1,7 @@
 import React from 'react';
 import {Content, LayoutWrapper} from "./styled";
 import NavBar from "../NavBar";
+import Footer from "../Footer";
 
 export default function Layout({children}) {
     return (
@@ -9,6 +10,7 @@ export default function Layout({children}) {
             <Content>
                 {children}
             </Content>
+            <Footer/>
         </LayoutWrapper>
     );
 };

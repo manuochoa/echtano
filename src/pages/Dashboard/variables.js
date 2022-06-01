@@ -85,10 +85,11 @@ export const dashboardRoundChartOptions = {
             dashArray: 0,
         },
         fill: {
-            colors: ['#7517F8'],
+            colors: ['#E323FF' ],
             type: 'gradient',
             gradient: {
                 shadeIntensity: 0.5,
+                gradientToColors: ['#7517F8'],
                 opacityFrom: 1,
                 opacityTo: 2,
                 stops: [0, 100]
@@ -96,6 +97,10 @@ export const dashboardRoundChartOptions = {
         },
         plotOptions: {
             radialBar: {
+                track: {
+                    background: '#25245D',
+                    margin: 5,
+                },
                 dataLabels: {
                     show: false
                 }
