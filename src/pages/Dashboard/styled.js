@@ -5,6 +5,13 @@ export const DashboardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  @media (max-width: 425px) {
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `
 
 export const WidgetWrapper = styled.div`
@@ -14,6 +21,10 @@ export const WidgetWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   border-radius: 16px;
+  @media (max-width: 425px) {
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 export const BottomWidgetWrapper = styled(WidgetWrapper)`
@@ -22,6 +33,13 @@ export const BottomWidgetWrapper = styled(WidgetWrapper)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 425px) {
+    max-width: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+  }
 `
 
 export const MSizeWidget = styled.div`
@@ -33,6 +51,9 @@ export const MSizeWidget = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  @media (max-width: 425px) {
+    margin: 10px 0;
+  }
 `
 
 export const MSizeTextContainer = styled.div`
@@ -91,7 +112,6 @@ export const BottomWidgetItem = styled.div`
     font-weight: 700;
     font-size: 20px;
     line-height: 32px;
-    //margin: 15px 0;
   }
   p {
     font-weight: 400;
@@ -100,6 +120,10 @@ export const BottomWidgetItem = styled.div`
   }
   svg {
     margin: 0 5px 0 10px;
+  }
+  @media (max-width: 425px) {
+    width: 100%;
+    margin: 20px 0;
   }
 `
 

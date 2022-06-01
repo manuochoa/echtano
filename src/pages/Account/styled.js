@@ -4,7 +4,6 @@ import {DashboardWrapper, WidgetWrapper} from "../Dashboard/styled";
 export const AccountWrapper = styled(DashboardWrapper)``;
 
 export const PriceWidgetWrapper = styled(WidgetWrapper)`
-  //padding: 15px 25px;
   background: rgba(255, 255, 255, 0.8);
   margin-bottom: 20px;
   h3, p {
@@ -21,6 +20,10 @@ export const AccountWidgetContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const AccountWidgetWrapper = styled(PriceWidgetWrapper)`
@@ -28,6 +31,9 @@ export const AccountWidgetWrapper = styled(PriceWidgetWrapper)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const AccountDataContainer = styled.div`
@@ -54,8 +60,8 @@ export const AccountDataContainer = styled.div`
 `
 
 export const AccountDataWrapper = styled.div`
-  width: 100%;
-  max-width: 380px;
+  width: 50%;
+  //max-width: 380px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

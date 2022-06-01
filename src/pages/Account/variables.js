@@ -80,7 +80,16 @@ export const accountBalanceData = [
                     dashArray: 0,
                 },
                 fill: {
-                    colors: ['#4DA1FF', '#FF7D05'],
+                    type: 'gradient',
+                    colors: ['#4DFFDF', '#FF7D05'],
+                    gradient: {
+                        type: 'horizontal',
+                        shadeIntensity: 0.5,
+                        gradientToColors: [ '#4DA1FF', '#FFD422'],
+                        opacityFrom: 1,
+                        opacityTo: 1,
+                        stops: [0, 100]
+                    }
                 },
                 plotOptions: {
                     radialBar: {
@@ -107,57 +116,3 @@ export const accountBalanceData = [
         ],
     }
 ]
-
-export const accountRoundChartOptions = {
-    options: {
-        labels: [' '],
-        chart: {
-            background: "transparent",
-            sparkline: {
-                enabled: true
-            }
-        },
-        legend: {
-            show: false,
-        },
-        dataLabels: {
-            enabled: false,
-            show: false
-        },
-        stroke: {
-            lineCap: "round",
-            curve: 'smooth',
-            width: 1,
-            dashArray: 0,
-        },
-        fill: {
-            type: 'gradient',
-            // colors: ['#4DA1FF', '#FF7D05'],
-            gradient: {
-                shadeIntensity: 1,
-                opacityFrom: 0.7,
-                opacityTo: 0.9,
-                colorStops: [
-                    {
-                        offset: 0,
-                        color: "#EB656F",
-                        opacity: 1
-                    },
-                    {
-                        offset: 20,
-                        color: "#FAD375",
-                        opacity: 1
-                    },
-                ]
-            }
-        },
-        plotOptions: {
-            radialBar: {
-                dataLabels: {
-                    show: false
-                }
-            }
-        }
-    },
-    series: [80, 87],
-};

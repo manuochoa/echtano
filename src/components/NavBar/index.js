@@ -3,7 +3,7 @@ import {
     ConnectButton,
     Footer,
     FooterImageContainer,
-    NavBarContainer,
+    NavBarContainer, NavBarFooter, NavBarFooterImageContainer,
     NavBarImgContainer,
     NavBarItem,
     NavBarWrapper
@@ -50,14 +50,14 @@ export default function NavBar() {
                         )
                     })
                 }
-                <Footer>
+                <NavBarFooter>
                     <a href="https://echtano.vercel.app/">
                         Echtano.com
-                        <FooterImageContainer>
+                        <NavBarFooterImageContainer>
                             <img src={goToIcon} alt=""/>
-                        </FooterImageContainer>
+                        </NavBarFooterImageContainer>
                     </a>
-                </Footer>
+                </NavBarFooter>
             </NavBarContainer>
         </NavBarWrapper>
     );
