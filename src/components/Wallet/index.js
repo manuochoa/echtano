@@ -33,7 +33,7 @@ export default function Wallet({ handleClose }) {
                                             </UserWalletImageContainer>
                                             <p>{wall.name}</p>
                                         </UserWalletContainer>
-                                        Connect
+                                        <p>Connect</p>
                                     </UserWallet>
                                 )
                             })

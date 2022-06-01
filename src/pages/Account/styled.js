@@ -14,6 +14,9 @@ export const PriceWidgetWrapper = styled(WidgetWrapper)`
     font-size: 20px;
     line-height: 24px;
   }
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 `
 
 export const AccountWidgetContainer = styled.div`
@@ -65,4 +68,7 @@ export const AccountDataWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 425px) {
+    width: 35%;
+  }
 `

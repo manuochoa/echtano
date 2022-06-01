@@ -71,7 +71,13 @@ export const UserWallet = styled.div`
   transition: all 0.3s;
   opacity: 0.5;
   cursor: pointer;
+  p {
+    opacity: 0;
+  }
   &:hover {
+    opacity: 1;
+  }
+  &:hover p {
     opacity: 1;
   }
 `
@@ -85,6 +91,9 @@ export const UserWalletContainer = styled.div`
   font-size: 18px;
   line-height: 20px;
   color: ${({theme}) => theme.colors.lightBlack};
+  p {
+    opacity: 1;
+  }
 `
 
 export const UserWalletImageContainer = styled.div`

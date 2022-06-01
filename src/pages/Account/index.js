@@ -10,6 +10,7 @@ import {
 import {accountBalanceData, accountData} from "./variables";
 import ChartComponent from "../../components/ChartComponent";
 import accountChartIcon from "../../images/accountChartIcon.svg"
+import Timer from "../../components/Timer";
 
 export default function Account() {
     return (
@@ -34,8 +35,8 @@ export default function Account() {
                                         })
                                     }
                                     </AccountDataWrapper>
-                                    {item.chartOptions &&
-                                        <ChartComponent type="radialBar" options={item.chartOptions} width="200px" icon={accountChartIcon}/>}
+                                    {item.chartOptions ?
+                                        <ChartComponent type="radialBar" options={item.chartOptions} width="200px" icon={accountChartIcon}/> : <Timer/>}
                                 </AccountWidgetWrapper>
                             )
                         })
