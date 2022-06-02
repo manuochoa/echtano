@@ -8,6 +8,9 @@ export const WalletWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: ${({theme}) => theme.colors.white};
+  @media (max-width: 425px) {
+    margin: 0 15px;
+  }
 `
 
 export const WalletContainer = styled.div`
@@ -16,6 +19,19 @@ export const WalletContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  position: relative;
+`
+
+export const CrossIconContainer = styled.div`
+  width: 100%;
+  max-width: 20px;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  cursor: pointer;
+  img {
+    width: 100%;
+  }
 `
 
 export const WalletTextContainer = styled.div`
@@ -35,7 +51,7 @@ export const WalletTextContainer = styled.div`
 
   p {
     color: ${({theme}) => theme.colors.grey};
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     line-height: 180%;
     margin: 20px 0;
@@ -60,23 +76,23 @@ export const UserWallet = styled.div`
   justify-content: space-between;
   align-items: center;
   border: none;
-  border-left: 4px solid;
-  border-image: linear-gradient(180deg, #7517F8 0%, #E323FF 100%);
-  border-image-slice: 1;
+  border-left: 4px solid  rgba(171, 105, 204, 0.53);;
   margin: 20px 0;
   color: ${({theme}) => theme.colors.purple};
   font-weight: 700;
   font-size: 18px;
   line-height: 20px;
   transition: all 0.3s;
-  opacity: 0.5;
   cursor: pointer;
   p {
     opacity: 0;
   }
   &:hover {
     opacity: 1;
+    border-image: linear-gradient(180deg, #7517F8 0%, #E323FF 100%);
+    border-image-slice: 1;
   }
+
   &:hover p {
     opacity: 1;
   }

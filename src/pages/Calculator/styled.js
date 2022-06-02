@@ -9,11 +9,12 @@ export const CalculatorWidgetWrapper = styled(WidgetWrapper)`
   justify-content: space-between;
   align-items: center;
   position: relative;
-  height: fill-availableж
+  height: fill-available;
   @media (max-width: 768px) {
     justify-content: center;
-  padding: 0 20px;
-}
+    padding: 0 20px;
+    margin: 0 15px;
+  }
 `
 export const Container = styled('div')`
   padding: 24px;
