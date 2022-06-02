@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    CrossIconContainer,
     UserWallet,
     UserWalletContainer, UserWalletImageContainer,
     UserWalletsList,
@@ -9,12 +10,16 @@ import {
 } from "./styled";
 import Modal from "../Modal";
 import {userWallets} from "./variables";
+import crossImage from "../../images/cross-circle.svg"
 
 export default function Wallet({ handleClose }) {
     return (
         <Modal handleCloseMenu={(e) => handleClose(e)}>
             <WalletWrapper>
                 <WalletContainer>
+                    <CrossIconContainer onClick={(e) => handleClose(e)}>
+                        <img src={crossImage} alt=""/>
+                    </CrossIconContainer>
                     <WalletTextContainer>
                         <h1>Sellect a Wallet</h1>
                         <p>

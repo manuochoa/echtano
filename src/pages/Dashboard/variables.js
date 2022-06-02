@@ -114,7 +114,7 @@ export const dashboardRoundChartOptions = {
 export const dashboardAreaChartOptions = {
     options: {
         chart: {
-            width: "100%",
+            // width: "100%",
             toolbar: {
                 show: false
             },

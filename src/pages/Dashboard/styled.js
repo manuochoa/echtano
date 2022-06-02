@@ -22,8 +22,8 @@ export const WidgetWrapper = styled.div`
   flex-wrap: wrap;
   border-radius: 16px;
   @media (max-width: 425px) {
-    align-items: center;
-    justify-content: center;
+    //align-items: center;
+    //justify-content: center;
   }
 `
 
@@ -34,11 +34,13 @@ export const BottomWidgetWrapper = styled(WidgetWrapper)`
   justify-content: space-between;
   align-items: center;
   @media (max-width: 425px) {
-    max-width: 300px;
+    max-width: unset;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px 0;
+    margin: 10px 30px;
+    padding: 0 10px;
   }
 `
 
@@ -56,6 +58,7 @@ export const MSizeWidget = styled.div`
   }
   @media (max-width: 425px) {
     margin: 10px 0;
+    max-width: unset;
   }
 `
 
@@ -101,6 +104,16 @@ export const XlSizeWidget = styled(MSizeWidget)`
   align-items: flex-start;
   justify-content: space-between;
   overflow: hidden;
+  @media (max-width: 425px) {
+    & > .chart {
+      width: 380px !important;
+    }
+  }
+  @media (max-width: 375px) {
+    & > .chart {
+      width: 100% !important;
+    }
+  }
 `
 
 export const XlSizeTextContainer = styled(MSizeTextContainer)`
@@ -137,6 +150,7 @@ export const BottomWidgetItem = styled.div`
   @media (max-width: 425px) {
     width: 100%;
     margin: 20px 0;
+    max-width: unset;
   }
 `
 
