@@ -30,12 +30,17 @@ export const FooterItem = styled(Link)`
   flex-direction: column;
   align-items: center;
   color: ${({theme}) => theme.colors.white};
+  transition: all 0.3s;
+  &:hover {
+    color: ${({theme}) => theme.colors.purple};
+  }
+  &:hover svg path {
+    fill: ${({theme}) => theme.colors.purple};
+  }
 `
 
 export const FooterIMageContainer = styled.div`
   width: 100%;
   max-width: 20px;
-  img {
-    width: 100%;
-  }
+  transition: all 0.3s;
 `

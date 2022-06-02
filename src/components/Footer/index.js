@@ -11,7 +11,7 @@ export default function Footer() {
                         return (
                             <FooterItem key={item.id} to={item.link}>
                                 <FooterIMageContainer>
-                                    <img src={item.icon} alt=""/>
+                                    {item.icon}
                                 </FooterIMageContainer>
                                 {item.name}
                             </FooterItem>

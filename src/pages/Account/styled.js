@@ -64,7 +64,6 @@ export const AccountDataContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: none;
   border-left: 4px solid;
   border-image: ${({gradient}) => gradient};
   border-image-slice: 1;
