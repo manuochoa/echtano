@@ -56,6 +56,9 @@ export const MSizeWidget = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   @media (max-width: 1440px) {
+    max-width: 260px;
+  }
+  @media (max-width: 1440px) {
     max-width: 235px;
   }
   @media (max-width: 425px) {
