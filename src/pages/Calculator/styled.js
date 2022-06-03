@@ -14,6 +14,7 @@ export const CalculatorWidgetWrapper = styled(WidgetWrapper)`
     justify-content: center;
     padding: 0 20px;
     margin: 0 15px;
+    height: 100%;
   }
 `
 export const Container = styled('div')`
