@@ -3,8 +3,8 @@ import Layout from "../../components/Layout";
 
 export default function Swap () {
   return (
-    <Layout>
+    <div>
         Swap
-    </Layout>
+    </div>
   );
 };

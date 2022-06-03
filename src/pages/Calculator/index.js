@@ -1,8 +1,7 @@
 import {Divider} from '@mui/material';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Input from '../../components/Form/Input';
 import CustomSlider from '../../components/Form/Slider/Slider';
-import Layout from "../../components/Layout";
 import {
     CalculatorWidgetWrapper,
     Circle,
@@ -24,8 +23,13 @@ import briefcase from '../../images/briefcase-2.svg'
 import dollar from '../../images/dollar-circle.svg'
 
 export default function Calculator() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
-        <Layout>
+        // <Layout>
             <CalculatorWidgetWrapper>
                 <Container>
 
@@ -125,6 +129,6 @@ export default function Calculator() {
                     </Stats>
                 </Container>
             </CalculatorWidgetWrapper>
-        </Layout>
+        // </Layout>
     );
 };

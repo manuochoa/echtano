@@ -1,5 +1,4 @@
-import React from 'react';
-import Layout from "../../components/Layout";
+import React, {useEffect} from 'react';
 import {
     BottomValueContainer,
     BottomWidgetItem,
@@ -13,7 +12,12 @@ import {
     XlSizeValueContainer,
     XlSizeWidget
 } from "./styled";
-import {bottomSizeWidget, dashboardAreaChartOptions, dashboardRoundChartOptions, WidgetMSize} from "./variables";
+import {
+    bottomSizeWidget,
+    dashboardAreaChartOptions,
+    dashboardRoundChartOptions,
+    WidgetMSize
+} from "./variables";
 import ChartComponent from "../../components/ChartComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretDown} from "@fortawesome/free-solid-svg-icons";
@@ -24,13 +28,16 @@ export default function Dashboard() {
         return number * (300 / 100);
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
-        <Layout>
+        // <Layout>
             <DashboardWrapper>
                 <WidgetWrapper>
                     {
                         WidgetMSize.map(item => {
-                            console.log(item.percentType)
                             return (
                                 <MSizeWidget key={item.id}>
                                     <ChartComponent type="radialBar" options={dashboardRoundChartOptions} icon={item.icon} width="70%"/>
@@ -56,7 +63,7 @@ export default function Dashboard() {
                                         <p>{item.title}</p>
                                         <h3>{item.value}</h3>
                                         <XlSizeValueContainer>
-                                            <p>{item.percentValue} %</p>
+                                            <p>+{item.percentValue} %</p>
                                         </XlSizeValueContainer>
                                     </XlSizeTextContainer>
                                     <ChartComponent height='70%' type='area' options={dashboardAreaChartOptions}/>
@@ -69,14 +76,15 @@ export default function Dashboard() {
                     {
                         bottomSizeWidget.map(item => {
                             return (
-                                <BottomWidgetItem>
+                                <BottomWidgetItem key={item.id}>
                                     <p>{item.title}</p>
                                     <BottomValueContainer>
                                         <h3>{item.value}</h3>
-                                        <p><FontAwesomeIcon icon={faCaretDown}/>{item.percentValue}</p>
+                                        <p><FontAwesomeIcon icon={faCaretDown}/>{item.percentValue}%</p>
                                     </BottomValueContainer>
                                     <div style={{
                                         width: '100%',
+                                        maxWidth: '260px',
                                         height: '5px',
                                         background: '#25245D',
                                         position: 'relative',
@@ -100,6 +108,6 @@ export default function Dashboard() {
                     }
                 </BottomWidgetWrapper>
             </DashboardWrapper>
-        </Layout>
+        // </Layout>
     );
 };

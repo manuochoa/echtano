@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     ConnectButton,
-    Footer,
-    FooterImageContainer,
     NavBarContainer, NavBarFooter, NavBarFooterImageContainer,
     NavBarImgContainer,
     NavBarItem,
@@ -13,10 +11,11 @@ import navData from "./variables";
 import arrow from "../../images/arrow-right.svg"
 import goToIcon from "../../images/goToIcon.svg"
 import Wallet from "../Wallet";
-import {Link} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 
 export default function NavBar() {
     const [open, setOpen] = useState(false)
+    const location = useLocation();
 
     const handleOpen = () => {
         setOpen(true)
@@ -25,6 +24,7 @@ export default function NavBar() {
     const handleClose = (e) => {
         setOpen(!open)
     }
+
 
     return (
         <NavBarWrapper>
@@ -40,13 +40,12 @@ export default function NavBar() {
                 {
                     navData.map(item => {
                         return (
-                            <NavBarItem key={item.id} to={item.link}>
+                            <NavBarItem key={item.id} to={item.link} active={location.pathname === item.link}>
                                 <NavBarImgContainer>
                                     <img src={item.icon} alt=""/>
                                 </NavBarImgContainer>
                                 <p>{item.name}</p>
                             </NavBarItem>
-
                         )
                     })
                 }

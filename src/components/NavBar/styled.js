@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export const NavBarWrapper = styled.nav`
   width: 100%;
-  max-width: 260px;
+  max-width: 240px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,6 @@ export const NavBarWrapper = styled.nav`
   color: ${({theme}) => theme.colors.white};
   padding: 0 20px;
   position: relative;
-  //position: fixed;
   @media (max-width: 1280px) {
     max-width: 200px;
   }
@@ -48,13 +47,10 @@ export const NavBarItem = styled(Link)`
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  background: transparent;
+  background: ${({active, theme}) => active === true ? theme.colors.purple : 'transparent' };
   border-radius: 100px;
   padding: 15px 0;
   transition: all 0.3s;
-  &:hover {
-    background: ${({theme}) => theme.colors.purple};
-  }
   @media (max-width: 768px) {
     display: none;
   }
@@ -99,7 +95,7 @@ export const ConnectButton = styled(NavBarItem)`
 
 export const NavBarFooter = styled.footer`
   width: 100%;
-  max-width: 260px;
+  max-width: 240px;
   position: absolute;
   bottom: 0;
   display: flex;
