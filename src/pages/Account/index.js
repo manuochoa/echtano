@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Layout from "../../components/Layout";
 import {
     AccountDataContainer, AccountDataWrapper,
@@ -13,8 +13,13 @@ import accountChartIcon from "../../images/accountChartIcon.svg"
 import Timer from "../../components/Timer";
 
 export default function Account() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
-        <Layout>
+        // <Layout>
             <AccountWrapper>
                 <AccountWidgetContainer>
                     {
@@ -24,7 +29,6 @@ export default function Account() {
                                     <AccountDataWrapper>
                                     {
                                         item.data.map(dataItem => {
-                                            console.log(dataItem)
                                             return (
                                                 <AccountDataContainer gradient={dataItem.color}>
                                                     <p>{dataItem.title}</p>
@@ -53,6 +57,6 @@ export default function Account() {
                     })
                 }
             </AccountWrapper>
-        </Layout>
+        // </Layout>
     );
 };

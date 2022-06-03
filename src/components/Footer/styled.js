@@ -29,13 +29,10 @@ export const FooterItem = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${({theme}) => theme.colors.white};
+  color: ${({active, theme}) => active === true ? theme.colors.purple : theme.colors.white };
   transition: all 0.3s;
-  &:hover {
-    color: ${({theme}) => theme.colors.purple};
-  }
-  &:hover svg path {
-    fill: ${({theme}) => theme.colors.purple};
+  svg path {
+    fill: ${({active, theme}) => active === true ? theme.colors.purple : theme.colors.white };
   }
 `
 
