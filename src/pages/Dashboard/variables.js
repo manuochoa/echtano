@@ -45,6 +45,7 @@ export const bottomSizeWidget = [
         value: "294 510,75",
         percentValue: 10,
         sizeValue: 30,
+        percentType: "up",
     },
     {
         id: 1,
@@ -52,6 +53,7 @@ export const bottomSizeWidget = [
         value: "$15,935,620",
         percentValue: 10,
         sizeValue: 60,
+        percentType: "up",
     },
     {
         id: 2,
@@ -59,6 +61,7 @@ export const bottomSizeWidget = [
         value: "$12,875",
         percentValue: 10,
         sizeValue: 10,
+        percentType: "up",
     },
 ]
 

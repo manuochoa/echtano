@@ -76,7 +76,7 @@ export default function Dashboard() {
                     {
                         bottomSizeWidget.map(item => {
                             return (
-                                <BottomWidgetItem key={item.id}>
+                                <BottomWidgetItem key={item.id} percentType={item.percentType}>
                                     <p>{item.title}</p>
                                     <BottomValueContainer>
                                         <h3>{item.value}</h3>
