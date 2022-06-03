@@ -129,6 +129,13 @@ export const BottomWidgetItem = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 40px 55px;
+  svg {
+    transform: rotateX(${({percentType}) => percentType === "up" && '180deg'});
+    margin: 0 10px;
+  }
+  path {
+    fill: ${({percentType, theme}) => percentType === "down" ? theme.colors.red : theme.colors.green};
+  }
   h3 {
     font-weight: 700;
     font-size: 20px;
@@ -148,7 +155,6 @@ export const BottomWidgetItem = styled.div`
   @media (max-width: 425px) {
     width: 100%;
     margin: 20px;
-    //max-width: unset;
   }
 `
 
