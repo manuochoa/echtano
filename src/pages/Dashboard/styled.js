@@ -94,7 +94,7 @@ export const MSizeValueContainer = styled.div`
     line-height: 20px;
   }
   svg {
-    transform: rotateX(${({percentType}) => percentType === "up" && '180deg'});
+    transform: rotateX(${({percentType}) => percentType === "up" && '179deg'});
     margin: 0 10px;
   }
   path {
