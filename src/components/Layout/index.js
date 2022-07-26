@@ -1,17 +1,27 @@
-import React from 'react';
-import {Content, LayoutWrapper} from "./styled";
+import React from "react";
+import { Content, LayoutWrapper } from "./styled";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
-export default function Layout() {
-    return (
-        <LayoutWrapper>
-            <NavBar/>
-            <Content>
-                <Outlet />
-            </Content>
-            <Footer/>
-        </LayoutWrapper>
-    );
-};
+export default function Layout({
+  connectWalletConnect,
+  connectMetamask,
+  disconnectWallet,
+  userAddress,
+}) {
+  return (
+    <LayoutWrapper>
+      <NavBar
+        connectWalletConnect={connectWalletConnect}
+        connectMetamask={connectMetamask}
+        disconnectWallet={disconnectWallet}
+        userAddress={userAddress}
+      />
+      <Content>
+        <Outlet />
+      </Content>
+      <Footer />
+    </LayoutWrapper>
+  );
+}
