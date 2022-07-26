@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.7.4+commit.3f05b770"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					}
+				],
+				"name": "createPair",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "pair",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"sindicate2.sol": "IDEXFactory"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"sindicate2.sol": {
+			"keccak256": "0xeba5880c9e5f3dece78a7f924ddc1b925b00eeaf91a7a40f2ef53f4aa37f1f01",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5f8e5cdf752d23cfd85f0cdf80f89d33cac5de575b1759c2985a1d6e64c079fa",
+				"dweb:/ipfs/QmPByzMbAiGX6inQJ45T8VrfUrJ5XHki2qHYRoCRURetfy"
+			]
+		}
+	},
+	"version": 1
+}
