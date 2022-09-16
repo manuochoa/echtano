@@ -16,11 +16,7 @@ function App() {
     try {
       const provider = new WalletConnectProvider({
         rpc: {
-          1: "https://cloudflare-eth.com/",
-          25: "https://evm-cronos.crypto.org/",
-          56: "https://bsc-dataseed1.ninicoin.io/",
-          137: "https://polygon-rpc.com/",
-          43114: "https://api.avax.network/ext/bc/C/rpc",
+          2000: "https://rpc01-sg.dogechain.dog",
         },
         infuraId: null,
       });
@@ -62,6 +58,20 @@ function App() {
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
+
+      const chainId = await window.ethereum.request({
+        method: "eth_chainId",
+      });
+      console.log(chainId, "chainId");
+
+      let id = parseInt(chainId, 16);
+
+      if (chainId !== "0x7d0") {
+        await changeNetwork();
+      }
+
+      setChainId(id);
+
       setUserAddress(accounts[0]);
       setWallet("METAMASK");
 
@@ -71,14 +81,6 @@ function App() {
         window.localStorage.clear();
         window.localStorage.setItem("userAddress", accounts[0]);
       }
-
-      const chainId = await window.ethereum.request({
-        method: "eth_chainId",
-      });
-
-      let id = parseInt(chainId, 16);
-
-      setChainId(id);
 
       window.ethereum.on("accountsChanged", function (accounts) {
         setUserAddress(accounts[0]);
@@ -94,15 +96,40 @@ function App() {
     }
   };
 
+  const changeNetwork = async () => {
+    try {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x7d0" }],
+      });
+    } catch (error) {
+      console.log(error);
+      if (Number(error.code) === 4902) {
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [
+            {
+              chainId: "0x7d0", // A 0x-prefixed hexadecimal string
+              chainName: "Dogechain Mainnet",
+              nativeCurrency: {
+                name: "DOGE",
+                symbol: "DOGE", // 2-6 characters long
+                decimals: 18,
+              },
+              rpcUrls: ["https://rpc01-sg.dogechain.dog"],
+              blockExplorerUrls: ["https://explorer.dogechain.dog/"],
+            },
+          ],
+        });
+      }
+    }
+  };
+
   const disconnectWallet = async () => {
     if (wallet === "WALLET_CONNECT") {
       const provider = new WalletConnectProvider({
         rpc: {
-          1: "https://cloudflare-eth.com/",
-          25: "https://evm-cronos.crypto.org/",
-          56: "https://bsc-dataseed1.ninicoin.io/",
-          137: "https://polygon-rpc.com/",
-          43114: "https://api.avax.network/ext/bc/C/rpc",
+          2000: "https://rpc01-sg.dogechain.dog",
         },
         infuraId: null,
       });

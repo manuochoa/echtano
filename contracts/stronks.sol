@@ -198,7 +198,7 @@ abstract contract ERC20Detailed is IERC20 {
 interface IDEXRouter {
     function factory() external pure returns (address);
 
-    function WETH() external pure returns (address);
+    function WWDOGE() external pure returns (address);
 
     function addLiquidity(
         address tokenA,
@@ -217,7 +217,7 @@ interface IDEXRouter {
             uint256 liquidity
         );
 
-    function addLiquidityETH(
+    function addLiquidityWDOGE(
         address token,
         uint256 amountTokenDesired,
         uint256 amountTokenMin,
@@ -248,7 +248,7 @@ interface IDEXRouter {
         uint256 deadline
     ) external payable;
 
-    function swapExactTokensForETHSupportingFeeOnTransferTokens(
+    function swapExactTokensForWDOGESupportingFeeOnTransferTokens(
         uint256 amountIn,
         uint256 amountOutMin,
         address[] calldata path,
@@ -431,6 +431,7 @@ contract TheSindicate is ERC20Detailed, Ownable {
     uint256 public rebaseIndex = 1 * 10**18;
     uint256 public oneEEighteen = 1 * 10**18;
     uint256 public secondsPerDay = 86400;
+    // uint256 public rewardYield = 3943560072416;
     uint256 public rewardYield = 3599786566107;
     uint256 public rewardYieldDenominator = 10000000000000000;
     uint256 public maxSellTransactionAmount = 2500000 * 10**18;
@@ -447,7 +448,8 @@ contract TheSindicate is ERC20Detailed, Ownable {
     uint256 public _markerPairCount;
     mapping(address => bool) public automatedMarketMakerPairs;
 
-    uint256 public constant MAX_FEE_RATE = 25;
+    uint256 public constant MAX_FEE_RATE = 20;
+    uint256 public constant MAX_TOTAL_FEE = 70;
     uint256 public constant MAX_TAX_BRACKET_FEE_RATE = 5;
     uint256 public constant MAX_PARTY_LIST_DIVISOR_RATE = 75;
     uint256 public constant NON_MARKET_MAKER_FEE_RATE = 5;
@@ -468,34 +470,37 @@ contract TheSindicate is ERC20Detailed, Ownable {
     address constant ZERO = 0x0000000000000000000000000000000000000000;
 
     address public liquidityReceiver =
-        0x1a2Ce410A034424B784D4b228f167A061B94CFf4;
+        0xACa3110F96E5e8f928A4BA32feADF6A31E1a1689;
     address public treasuryReceiver =
-        0x20D61737f972EEcB0aF5f0a85ab358Cd083Dd56a;
+        0xE473300c2bBfE2883be58b5Ff46E3AAD9A3a426E;
     address public riskFreeValueReceiver =
-        0x826b8d2d523E7af40888754E3De64348C00B99f4;
-    address public stableCoin = 0xc42974d6554F9054265b477723C3f689d8699239; // USDC Echelon
+        0x485021e16A96270994f1c9959367808adf1c2260;
+    address public matrixAddress = 0xE473300c2bBfE2883be58b5Ff46E3AAD9A3a426E;
+    address public stableCoin = 0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D; // USDC Echelon
 
     IDEXRouter public router;
     IDEXFactory public factory;
     IDexPair public iDexPair;
     address public pair;
 
-    uint256 private constant maxBracketTax = 10; // max bracket is holding 10%
+    uint256 private constant maxBracketTax = 14; // max bracket is holding 10%
 
-    uint256 public liquidityFee = 5;
+    uint256 public liquidityFee = 4;
     uint256 public treasuryFee = 3;
+    uint256 public buyFeeRFV = 5;
+    uint256 public matrixFee = 2;
     uint256 public burnFee = 0;
     uint256 public sellBurnFee = 0;
-    uint256 public buyFeeRFV = 5;
     uint256 public sellFeeTreasuryAdded = 2;
-    uint256 public sellFeeRFVAdded = 5;
+    uint256 public sellFeeRFVAdded = 0;
+    uint256 public sellmatrixFee = 2;
     uint256 public sellLaunchFeeAdded = 10;
     uint256 public sellLaunchFeeSubtracted = 0;
-    uint256 public totalBuyFee = liquidityFee.add(treasuryFee).add(buyFeeRFV);
+    uint256 public totalBuyFee = liquidityFee.add(treasuryFee).add(buyFeeRFV).add(matrixFee);
     uint256 public totalSellFee =
         totalBuyFee.add(sellFeeTreasuryAdded).add(sellFeeRFVAdded).add(
             sellLaunchFeeAdded
-        );
+        ).add(sellmatrixFee);
     uint256 targetLiquidity = 50;
     uint256 targetLiquidityDenominator = 100;
 
@@ -519,12 +524,11 @@ contract TheSindicate is ERC20Detailed, Ownable {
     mapping(address => uint256) private _gonBalances;
     mapping(address => mapping(address => uint256)) private _allowedFragments;
 
-    constructor() ERC20Detailed("ECHTANO", "$ECHO", uint8(DECIMALS)) {
-        router = IDEXRouter(0x35fb4895b68aC7A2D11da59d4E9f520c9C86A546); // ECH Swap
-
+    constructor() ERC20Detailed("STRONKS", "STRONKS", uint8(DECIMALS)) {
+        router = IDEXRouter(0xa4EE06Ce40cb7e8c04E127c1F7D3dFB7F7039C81); // Doge Router
         pair = IDEXFactory(router.factory()).createPair(
             address(this),
-            router.WETH()
+            router.WWDOGE()
         );
 
         address pairStableCoin = IDEXFactory(router.factory()).createPair(
@@ -545,6 +549,7 @@ contract TheSindicate is ERC20Detailed, Ownable {
         _gonsPerFragment = TOTAL_GONS.div(_totalSupply);
 
         _isFeeExempt[treasuryReceiver] = true;
+        _isFeeExempt[matrixAddress] = true;
         _isFeeExempt[riskFreeValueReceiver] = true;
         _isFeeExempt[address(this)] = true;
         _isFeeExempt[msg.sender] = true;
@@ -882,7 +887,7 @@ contract TheSindicate is ERC20Detailed, Ownable {
     }
 
     function _addLiquidity(uint256 tokenAmount, uint256 BNBAmount) private {
-        router.addLiquidityETH{value: BNBAmount}(
+        router.addLiquidityWDOGE{value: BNBAmount}(
             address(this),
             tokenAmount,
             0,
@@ -911,9 +916,9 @@ contract TheSindicate is ERC20Detailed, Ownable {
     function _swapTokensForBNB(uint256 tokenAmount, address receiver) private {
         address[] memory path = new address[](2);
         path[0] = address(this);
-        path[1] = router.WETH();
+        path[1] = router.WWDOGE();
 
-        router.swapExactTokensForETHSupportingFeeOnTransferTokens(
+        router.swapExactTokensForWDOGESupportingFeeOnTransferTokens(
             tokenAmount,
             0,
             path,
@@ -927,7 +932,7 @@ contract TheSindicate is ERC20Detailed, Ownable {
     {
         address[] memory path = new address[](3);
         path[0] = address(this);
-        path[1] = router.WETH();
+        path[1] = router.WWDOGE();
         path[2] = stableCoin;
 
         router.swapExactTokensForTokensSupportingFeeOnTransferTokens(
@@ -1036,11 +1041,14 @@ contract TheSindicate is ERC20Detailed, Ownable {
     ) internal returns (uint256) {
         uint256 _realFee = totalBuyFee;
         uint256 _burnFee = burnFee;
+        uint256 _matrix = matrixFee;
+
 
         //check if it's a sell fee embedded
         if (automatedMarketMakerPairs[recipient]) {
             _realFee = totalSellFee;
             _burnFee = _burnFee.add(sellBurnFee);
+            _matrix = sellmatrixFee
         }
 
         //calculate Tax
@@ -1048,7 +1056,10 @@ contract TheSindicate is ERC20Detailed, Ownable {
             _realFee += getCurrentTaxBracket(sender);
         }
 
+        _realFee = SafeMath.min(_realFee, MAX_TOTAL_FEE);
+
         uint256 feeAmount = gonAmount.mul(_realFee).div(feeDenominator);
+        uint256 matrixAmount = gonAmount.mul(_matrix).div(feeDenominator);
 
         //make sure Burn is enabled and burnFee is > 0 (integer 0 equals to false)
         if (shouldBurn() && _burnFee > 0) {
@@ -1058,9 +1069,13 @@ contract TheSindicate is ERC20Detailed, Ownable {
             );
         }
 
-        _gonBalances[address(this)] = _gonBalances[address(this)].add(
-            feeAmount
+        _gonBalances[address(this)] = _gonBalances[matrixAddress].add(
+            matrixAmount
         );
+        _gonBalances[address(this)] = _gonBalances[address(this)].add(
+            feeAmount - matrixAmount
+        );
+        emit Transfer(sender, matrixAddress, matrixAmount.div(_gonsPerFragment));
         emit Transfer(sender, address(this), feeAmount.div(_gonsPerFragment));
 
         return gonAmount.sub(feeAmount);
@@ -1212,6 +1227,7 @@ contract TheSindicate is ERC20Detailed, Ownable {
                 .add(sellFeeTreasuryAdded)
                 .add(sellFeeRFVAdded)
                 .add(sellBurnFee)
+                .add(sellmatrixFee)
                 .add(sellLaunchFeeAdded - sellLaunchFeeSubtracted)
         );
     }
@@ -1287,6 +1303,7 @@ contract TheSindicate is ERC20Detailed, Ownable {
         address _liquidityReceiver,
         address _treasuryReceiver,
         address _riskFreeValueReceiver
+        address _matrixAddress
     ) external onlyOwner {
         require(_liquidityReceiver != address(0), "_liquidityReceiver not set");
         require(_treasuryReceiver != address(0), "_treasuryReceiver not set");
@@ -1297,10 +1314,12 @@ contract TheSindicate is ERC20Detailed, Ownable {
         liquidityReceiver = _liquidityReceiver;
         treasuryReceiver = _treasuryReceiver;
         riskFreeValueReceiver = _riskFreeValueReceiver;
+        matrixAddress = _matrixAddress;
         emit SetFeeReceivers(
             _liquidityReceiver,
             _treasuryReceiver,
             _riskFreeValueReceiver
+            _matrixAddress
         );
     }
 
@@ -1312,25 +1331,26 @@ contract TheSindicate is ERC20Detailed, Ownable {
         uint256 _sellFeeTreasuryAdded,
         uint256 _sellFeeRFVAdded,
         uint256 _sellBurnFee
+        uint256 _matrixFee,
+        uint256 _sellmatrixFee
     ) external onlyOwner {
         //check if total value does not exceed 20%
-        //PoC that Libero's contract is exploitable:
-        //https://mumbai.polygonscan.com/address/0x6fc034596feb97a522346d7a42e705b075632d0c#readContract
-        //Libero Contract: https://bscscan.com/address/0x0dfcb45eae071b3b846e220560bbcdd958414d78#readContract
         uint256 maxTotalBuyFee = _liquidityFee.add(_treasuryFee).add(
             _riskFreeValue
-        );
+        ).add(matrixFee);
 
         uint256 maxTotalSellFee = maxTotalBuyFee.add(_sellFeeTreasuryAdded).add(
             _sellFeeRFVAdded
-        );
+        ).add(sellmatrixFee);
 
         require(
             _liquidityFee <= MAX_FEE_RATE &&
                 _riskFreeValue <= MAX_FEE_RATE &&
                 _treasuryFee <= MAX_FEE_RATE &&
                 _sellFeeTreasuryAdded <= MAX_FEE_RATE &&
-                _sellFeeRFVAdded <= MAX_FEE_RATE,
+                _sellFeeRFVAdded <= MAX_FEE_RATE &&
+                _matrixFee <= MAX_FEE_RATE &&
+                _sellmatrixFee <= MAX_FEE_RATE,
             "set fee higher than max fee allowing"
         );
 
@@ -1344,13 +1364,15 @@ contract TheSindicate is ERC20Detailed, Ownable {
         sellFeeTreasuryAdded = _sellFeeTreasuryAdded;
         sellFeeRFVAdded = _sellFeeRFVAdded;
         burnFee = _burnFee;
+        matrixFee = _matrixFee;
+        sellmatrixFee = _sellmatrixFee;
         sellBurnFee = _sellBurnFee;
-        totalBuyFee = liquidityFee.add(treasuryFee).add(buyFeeRFV);
+        totalBuyFee = liquidityFee.add(treasuryFee).add(buyFeeRFV).add(matrixFee);
 
         setSellFee(
             totalBuyFee.add(sellFeeTreasuryAdded).add(sellFeeRFVAdded).add(
                 sellLaunchFeeAdded - sellLaunchFeeSubtracted
-            )
+            ).add(sellmatrixFee)
         );
 
         emit SetFees(
@@ -1518,6 +1540,7 @@ contract TheSindicate is ERC20Detailed, Ownable {
         address indexed _liquidityReceiver,
         address indexed _treasuryReceiver,
         address indexed _riskFreeValueReceiver
+        address _matrixReceiver
     );
 
     event SetStablecoin(address indexed stableCoin);
